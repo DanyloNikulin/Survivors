@@ -12,8 +12,7 @@ public class PlayerInput : MonoBehaviour
 	}
 	
 	[Inject]
-	public void Init(CharacterMovement movement) {
-		Debug.Log(movement);	
+	public void Init(CharacterMovement movement) {	
 		this.movement = movement;
 	}
 	
