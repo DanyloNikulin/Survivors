@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c7d58eee8028c43bfed74dffc58ed7, type: 3}
   m_Name: Monster
   m_EditorClassIdentifier: 
-  <HeathPoint>k__BackingField: 0
-  <Speed>k__BackingField: 0
-  <UnitName>k__BackingField: 
-  <UnitDoll>k__BackingField: {fileID: 0}
-  <Damage>k__BackingField: 0
-  <AttackCooldown>k__BackingField: 0
+  <HeathPoint>k__BackingField: 10
+  <Speed>k__BackingField: 0.5
+  <UnitName>k__BackingField: test
+  <Damage>k__BackingField: 1
+  <AttackCooldown>k__BackingField: 1

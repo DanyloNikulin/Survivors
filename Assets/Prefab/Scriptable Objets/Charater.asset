@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c639bdec882314b9a76d5707efa5b8, type: 3}
   m_Name: Charater
   m_EditorClassIdentifier: 
-  <HeathPoint>k__BackingField: 0
-  <Speed>k__BackingField: 0
-  <UnitName>k__BackingField: 
-  <UnitDoll>k__BackingField: {fileID: 0}
-  <CharaterDescriptor>k__BackingField: 
+  <HeathPoint>k__BackingField: 100
+  <Speed>k__BackingField: 1
+  <UnitName>k__BackingField: test
+  <CharacterDescriptor>k__BackingField: 
