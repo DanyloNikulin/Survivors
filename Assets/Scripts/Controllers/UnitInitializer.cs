@@ -9,7 +9,7 @@ namespace Controllers
 		[SerializeField] Unit unit;
 		
 		[Inject]
-		public void Init(string UnitName) {
+		public void Init(string unitName) {
 
 
 
