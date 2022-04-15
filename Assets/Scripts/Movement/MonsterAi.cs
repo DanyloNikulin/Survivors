@@ -1,27 +1,30 @@
 using UnityEngine;
-using Zenject; 
+using Zenject;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class MonsterAi : MonoBehaviour
+namespace Movement
 {
-
-    Transform _playerTransfor;
-    [SerializeField] float _speed;
-    [SerializeField] Rigidbody2D _body;
-
-
-    [Inject]
-    public void Init([Inject(Id = "Player")] Transform playerTransfor, Rigidbody2D _body) {
-        this._playerTransfor = playerTransfor;
-        this._body = _body;
-    }
-
-    void Update()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class MonsterAi : MonoBehaviour
     {
-        Move();
-    }
 
-    void Move() {
-        _body.velocity = ((Vector2)_playerTransfor.position - _body.position).normalized * _speed;   
-	}
+        Transform _playerTransform;
+        [SerializeField] float _speed;
+        [SerializeField] Rigidbody2D _body;
+
+
+        [Inject]
+        public void Init([Inject(Id = "Player")] Transform playerTransform, Rigidbody2D body) {
+            _playerTransform = playerTransform;
+            _body = body;
+        }
+
+        void Update()
+        {
+            Move();
+        }
+
+        void Move() {
+            _body.velocity = ((Vector2)_playerTransform.position - _body.position).normalized * _speed;   
+        }
+    }
 }

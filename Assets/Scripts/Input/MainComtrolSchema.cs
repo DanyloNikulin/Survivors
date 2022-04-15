@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @MainComtrolSchema : IInputActionCollection, IDisposable
+namespace Input
 {
-    public InputActionAsset asset { get; }
-    public @MainComtrolSchema()
+    public class @MainComtrolSchema : IInputActionCollection, IDisposable
     {
-        asset = InputActionAsset.FromJson(@"{
+        public InputActionAsset asset { get; }
+        public @MainComtrolSchema()
+        {
+            asset = InputActionAsset.FromJson(@"{
     ""name"": ""MainComtrolSchema"",
     ""maps"": [
         {
@@ -337,139 +339,140 @@ public class @MainComtrolSchema : IInputActionCollection, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Primary
-        m_Primary = asset.FindActionMap("Primary", throwIfNotFound: true);
-        m_Primary_MoveLeft = m_Primary.FindAction("Move Left", throwIfNotFound: true);
-        m_Primary_MoveRight = m_Primary.FindAction("Move Right", throwIfNotFound: true);
-        m_Primary_MoveDown = m_Primary.FindAction("Move Down", throwIfNotFound: true);
-        m_Primary_MoveUp = m_Primary.FindAction("Move Up", throwIfNotFound: true);
-        m_Primary_Ultimate = m_Primary.FindAction("Ultimate", throwIfNotFound: true);
-        m_Primary_Diagonalmovement = m_Primary.FindAction("Diagonal movement", throwIfNotFound: true);
-    }
+            // Primary
+            m_Primary = asset.FindActionMap("Primary", throwIfNotFound: true);
+            m_Primary_MoveLeft = m_Primary.FindAction("Move Left", throwIfNotFound: true);
+            m_Primary_MoveRight = m_Primary.FindAction("Move Right", throwIfNotFound: true);
+            m_Primary_MoveDown = m_Primary.FindAction("Move Down", throwIfNotFound: true);
+            m_Primary_MoveUp = m_Primary.FindAction("Move Up", throwIfNotFound: true);
+            m_Primary_Ultimate = m_Primary.FindAction("Ultimate", throwIfNotFound: true);
+            m_Primary_Diagonalmovement = m_Primary.FindAction("Diagonal movement", throwIfNotFound: true);
+        }
 
-    public void Dispose()
-    {
-        UnityEngine.Object.Destroy(asset);
-    }
-
-    public InputBinding? bindingMask
-    {
-        get => asset.bindingMask;
-        set => asset.bindingMask = value;
-    }
-
-    public ReadOnlyArray<InputDevice>? devices
-    {
-        get => asset.devices;
-        set => asset.devices = value;
-    }
-
-    public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
-
-    public bool Contains(InputAction action)
-    {
-        return asset.Contains(action);
-    }
-
-    public IEnumerator<InputAction> GetEnumerator()
-    {
-        return asset.GetEnumerator();
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
-
-    public void Enable()
-    {
-        asset.Enable();
-    }
-
-    public void Disable()
-    {
-        asset.Disable();
-    }
-
-    // Primary
-    private readonly InputActionMap m_Primary;
-    private IPrimaryActions m_PrimaryActionsCallbackInterface;
-    private readonly InputAction m_Primary_MoveLeft;
-    private readonly InputAction m_Primary_MoveRight;
-    private readonly InputAction m_Primary_MoveDown;
-    private readonly InputAction m_Primary_MoveUp;
-    private readonly InputAction m_Primary_Ultimate;
-    private readonly InputAction m_Primary_Diagonalmovement;
-    public struct PrimaryActions
-    {
-        private @MainComtrolSchema m_Wrapper;
-        public PrimaryActions(@MainComtrolSchema wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MoveLeft => m_Wrapper.m_Primary_MoveLeft;
-        public InputAction @MoveRight => m_Wrapper.m_Primary_MoveRight;
-        public InputAction @MoveDown => m_Wrapper.m_Primary_MoveDown;
-        public InputAction @MoveUp => m_Wrapper.m_Primary_MoveUp;
-        public InputAction @Ultimate => m_Wrapper.m_Primary_Ultimate;
-        public InputAction @Diagonalmovement => m_Wrapper.m_Primary_Diagonalmovement;
-        public InputActionMap Get() { return m_Wrapper.m_Primary; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PrimaryActions set) { return set.Get(); }
-        public void SetCallbacks(IPrimaryActions instance)
+        public void Dispose()
         {
-            if (m_Wrapper.m_PrimaryActionsCallbackInterface != null)
+            UnityEngine.Object.Destroy(asset);
+        }
+
+        public InputBinding? bindingMask
+        {
+            get => asset.bindingMask;
+            set => asset.bindingMask = value;
+        }
+
+        public ReadOnlyArray<InputDevice>? devices
+        {
+            get => asset.devices;
+            set => asset.devices = value;
+        }
+
+        public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
+
+        public bool Contains(InputAction action)
+        {
+            return asset.Contains(action);
+        }
+
+        public IEnumerator<InputAction> GetEnumerator()
+        {
+            return asset.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void Enable()
+        {
+            asset.Enable();
+        }
+
+        public void Disable()
+        {
+            asset.Disable();
+        }
+
+        // Primary
+        private readonly InputActionMap m_Primary;
+        private IPrimaryActions m_PrimaryActionsCallbackInterface;
+        private readonly InputAction m_Primary_MoveLeft;
+        private readonly InputAction m_Primary_MoveRight;
+        private readonly InputAction m_Primary_MoveDown;
+        private readonly InputAction m_Primary_MoveUp;
+        private readonly InputAction m_Primary_Ultimate;
+        private readonly InputAction m_Primary_Diagonalmovement;
+        public struct PrimaryActions
+        {
+            private @MainComtrolSchema m_Wrapper;
+            public PrimaryActions(@MainComtrolSchema wrapper) { m_Wrapper = wrapper; }
+            public InputAction @MoveLeft => m_Wrapper.m_Primary_MoveLeft;
+            public InputAction @MoveRight => m_Wrapper.m_Primary_MoveRight;
+            public InputAction @MoveDown => m_Wrapper.m_Primary_MoveDown;
+            public InputAction @MoveUp => m_Wrapper.m_Primary_MoveUp;
+            public InputAction @Ultimate => m_Wrapper.m_Primary_Ultimate;
+            public InputAction @Diagonalmovement => m_Wrapper.m_Primary_Diagonalmovement;
+            public InputActionMap Get() { return m_Wrapper.m_Primary; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(PrimaryActions set) { return set.Get(); }
+            public void SetCallbacks(IPrimaryActions instance)
             {
-                @MoveLeft.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveLeft;
-                @MoveLeft.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveLeft;
-                @MoveLeft.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveLeft;
-                @MoveRight.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveRight;
-                @MoveRight.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveRight;
-                @MoveRight.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveRight;
-                @MoveDown.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveDown;
-                @MoveDown.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveDown;
-                @MoveDown.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveDown;
-                @MoveUp.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveUp;
-                @MoveUp.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveUp;
-                @MoveUp.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveUp;
-                @Ultimate.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnUltimate;
-                @Ultimate.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnUltimate;
-                @Ultimate.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnUltimate;
-                @Diagonalmovement.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnDiagonalmovement;
-                @Diagonalmovement.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnDiagonalmovement;
-                @Diagonalmovement.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnDiagonalmovement;
-            }
-            m_Wrapper.m_PrimaryActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @MoveLeft.started += instance.OnMoveLeft;
-                @MoveLeft.performed += instance.OnMoveLeft;
-                @MoveLeft.canceled += instance.OnMoveLeft;
-                @MoveRight.started += instance.OnMoveRight;
-                @MoveRight.performed += instance.OnMoveRight;
-                @MoveRight.canceled += instance.OnMoveRight;
-                @MoveDown.started += instance.OnMoveDown;
-                @MoveDown.performed += instance.OnMoveDown;
-                @MoveDown.canceled += instance.OnMoveDown;
-                @MoveUp.started += instance.OnMoveUp;
-                @MoveUp.performed += instance.OnMoveUp;
-                @MoveUp.canceled += instance.OnMoveUp;
-                @Ultimate.started += instance.OnUltimate;
-                @Ultimate.performed += instance.OnUltimate;
-                @Ultimate.canceled += instance.OnUltimate;
-                @Diagonalmovement.started += instance.OnDiagonalmovement;
-                @Diagonalmovement.performed += instance.OnDiagonalmovement;
-                @Diagonalmovement.canceled += instance.OnDiagonalmovement;
+                if (m_Wrapper.m_PrimaryActionsCallbackInterface != null)
+                {
+                    @MoveLeft.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveLeft;
+                    @MoveLeft.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveLeft;
+                    @MoveLeft.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveLeft;
+                    @MoveRight.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveRight;
+                    @MoveRight.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveRight;
+                    @MoveRight.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveRight;
+                    @MoveDown.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveDown;
+                    @MoveDown.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveDown;
+                    @MoveDown.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveDown;
+                    @MoveUp.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveUp;
+                    @MoveUp.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveUp;
+                    @MoveUp.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnMoveUp;
+                    @Ultimate.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnUltimate;
+                    @Ultimate.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnUltimate;
+                    @Ultimate.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnUltimate;
+                    @Diagonalmovement.started -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnDiagonalmovement;
+                    @Diagonalmovement.performed -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnDiagonalmovement;
+                    @Diagonalmovement.canceled -= m_Wrapper.m_PrimaryActionsCallbackInterface.OnDiagonalmovement;
+                }
+                m_Wrapper.m_PrimaryActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @MoveLeft.started += instance.OnMoveLeft;
+                    @MoveLeft.performed += instance.OnMoveLeft;
+                    @MoveLeft.canceled += instance.OnMoveLeft;
+                    @MoveRight.started += instance.OnMoveRight;
+                    @MoveRight.performed += instance.OnMoveRight;
+                    @MoveRight.canceled += instance.OnMoveRight;
+                    @MoveDown.started += instance.OnMoveDown;
+                    @MoveDown.performed += instance.OnMoveDown;
+                    @MoveDown.canceled += instance.OnMoveDown;
+                    @MoveUp.started += instance.OnMoveUp;
+                    @MoveUp.performed += instance.OnMoveUp;
+                    @MoveUp.canceled += instance.OnMoveUp;
+                    @Ultimate.started += instance.OnUltimate;
+                    @Ultimate.performed += instance.OnUltimate;
+                    @Ultimate.canceled += instance.OnUltimate;
+                    @Diagonalmovement.started += instance.OnDiagonalmovement;
+                    @Diagonalmovement.performed += instance.OnDiagonalmovement;
+                    @Diagonalmovement.canceled += instance.OnDiagonalmovement;
+                }
             }
         }
-    }
-    public PrimaryActions @Primary => new PrimaryActions(this);
-    public interface IPrimaryActions
-    {
-        void OnMoveLeft(InputAction.CallbackContext context);
-        void OnMoveRight(InputAction.CallbackContext context);
-        void OnMoveDown(InputAction.CallbackContext context);
-        void OnMoveUp(InputAction.CallbackContext context);
-        void OnUltimate(InputAction.CallbackContext context);
-        void OnDiagonalmovement(InputAction.CallbackContext context);
+        public PrimaryActions @Primary => new PrimaryActions(this);
+        public interface IPrimaryActions
+        {
+            void OnMoveLeft(InputAction.CallbackContext context);
+            void OnMoveRight(InputAction.CallbackContext context);
+            void OnMoveDown(InputAction.CallbackContext context);
+            void OnMoveUp(InputAction.CallbackContext context);
+            void OnUltimate(InputAction.CallbackContext context);
+            void OnDiagonalmovement(InputAction.CallbackContext context);
+        }
     }
 }

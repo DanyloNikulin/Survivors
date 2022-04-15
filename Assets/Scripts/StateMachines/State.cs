@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class State: MonoBehaviour
+namespace StateMachines
 {
-    // Start is called before the first frame update
-    void Start()
+    public class State: MonoBehaviour
     {
+        // Start is called before the first frame update
+        void Start()
+        {
         
-    }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }

@@ -1,22 +1,26 @@
+using Input;
 using UnityEngine;
 using Zenject;
 
-public class PlayerInput : MonoBehaviour
+namespace Movement
 {
-    private MainComtrolSchema _control;
-	private CharacterMovement movement;
+	public class PlayerInput : MonoBehaviour
+	{
+		private MainComtrolSchema _control;
+		private CharacterMovement _movement;
 
-	private void Awake() {
-		_control = new MainComtrolSchema();
-        _control.Enable();
-	}
+		private void Awake() {
+			_control = new MainComtrolSchema();
+			_control.Enable();
+		}
 	
-	[Inject]
-	public void Init(CharacterMovement movement) {	
-		this.movement = movement;
-	}
+		[Inject]
+		public void Init(CharacterMovement movement) {	
+			_movement = movement;
+		}
 	
-	private void Update() {
-		movement.Move(_control.Primary.Diagonalmovement.ReadValue<Vector2>().normalized);
+		private void Update() {
+			_movement.Move(_control.Primary.Diagonalmovement.ReadValue<Vector2>().normalized);
+		}
 	}
 }
