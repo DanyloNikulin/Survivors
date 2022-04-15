@@ -1,6 +1,7 @@
 using UnityEngine;
-using Zenject;
+using Zenject; 
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class MonsterAi : MonoBehaviour
 {
 

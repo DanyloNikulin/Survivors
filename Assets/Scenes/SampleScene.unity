@@ -565,7 +565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 790505182}
   - component: {fileID: 790505183}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Monster Colission
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 949348903}
   - component: {fileID: 949348904}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: Environment Colission
   m_TagString: Untagged
   m_Icon: {fileID: 0}
