@@ -1,4 +1,5 @@
 using Controllers;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -15,7 +16,7 @@ namespace Injectors
 
 		private void BindFactories()
 		{ 
-			Container.BindFactory<GameObject, GameObject, MonsterSpawner.Factory>().FromFactory<UnitFactory>();
+			Container.BindFactory<GameObject, int, List<GameObject>, MonsterSpawner.Factory>().FromFactory<UnitFactory>();
 		}
 
 	}
