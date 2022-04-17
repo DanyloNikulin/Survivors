@@ -15,16 +15,14 @@ namespace Controllers
 
 
 		[Inject]
-		public void Init (MonsterSpawner.Factory factory, Transform characterTransform) {
+		public void Init (MonsterSpawner.Factory factory, [Inject(Id = "Player")] Transform characterTransform) {
 			_factory = factory;
 			_characterTransform = characterTransform;
 		}
 
 		private void Awake() {
-			Debug.Log(_characterTransform is null);
-			Debug.Log(_factory is null);
 			_monsters = _factory.Create(_mosterPrefab, _amountOfMonsters);
-			_mostersPositions = FigureUtills.CalculateCircle(_amountOfMonsters);
+			_mostersPositions = FigureUtills.CalculateCircleByStep(_amountOfMonsters);;
 			ScaleFigure();
 			TranslateFigure();
 			SetMostersOnPositions();
